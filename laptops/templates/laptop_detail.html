@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<div id="laptop-detail">
+    <h1>{{ laptop.name }}</h1>
+    <p>ფასი: {{ laptop.price }} ლარი</p>
+    <p>ხელმისაწვდომია: {{ laptop.stock }} ცალი</p>
+    <p>მაღაზია: {{ laptop.store.name }}</p>
+    <a href="{% url 'laptop_update' laptop.pk %}">რედაქტირება</a> |
+    <a href="{% url 'laptop_delete' laptop.pk %}">წაშლა</a>
+{% endblock %}

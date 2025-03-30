@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<div id="index-page">
+    <h1>მაღაზიების ჩამონათვალი</h1>
+    <p>აირჩიეთ ფილიალი:</p>
+    <ul>
+        {% for store in stores %}
+            <li><a href="{% url 'store_profile' store.pk %}">{{ store.name }}</a> - {{ store.address }}</li>
+        {% empty %}
+            <li>ფიალიალები ვერ მოიძებნა</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

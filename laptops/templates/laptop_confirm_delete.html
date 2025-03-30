@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+{% extends 'base.html' %}
+{% block content %}
+    <div id="laptop-confirm-delete">
+        <h1>Удалить {{ laptop.name }}?</h1>
+        <form method="post">
+            {% csrf_token %}
+            <input type="submit" value="Да, удалить">
+            <a href="{% url 'store_profile' laptop.store.pk %}">Отмена</a>
+        </form>
+    </div>
+{% endblock %}
+    <h1>წავშალოთ {{ laptop.name }}?</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" value="დიახ, წავშალოთ">
+        <a href="{% url 'store_profile' laptop.store.pk %}">გაუქმება</a>
+    </form>
+{% endblock %}
