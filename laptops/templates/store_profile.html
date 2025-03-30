@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<div id="store-profile">
+    <h1>{{ store.name }}</h1>
+    <p>მისამართი: {{ store.address }}</p>
+    <form method="get" action="{% url 'search_laptops' %}">
+        {{ form.as_p }}
+        <input type="submit" value="ძებნა">
+    </form>
+    <h2>ხელმისაწვდომი ლეპტოპები</h2>
+    <ul>
+        {% for laptop in laptops %}
+            <li><a href="{% url 'laptop_detail' laptop.pk %}">{{ laptop.name }}</a> - {{ laptop.price }} ლარი</li>
+        {% empty %}
+            <li>ლეპტოპები ვერ მოიძებნა</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'laptop_create' %}">ლეპტოპის დამატება</a>
+{% endblock %}
