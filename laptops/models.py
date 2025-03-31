@@ -23,4 +23,4 @@ class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Order {self.id} - {self.laptop.name}"
+        return f"შესყიდვა {self.id} - {self.laptop.name}"
