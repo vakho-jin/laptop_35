@@ -2,8 +2,6 @@ from django import forms
 from .models import Laptop, Order
 
 class LaptopForm(forms.ModelForm):
-
-
     class Meta:
         model = Laptop
         fields = ['name', 'price', 'store', 'stock']
@@ -15,15 +13,11 @@ class LaptopForm(forms.ModelForm):
         }
 
 class OrderForm(forms.ModelForm):
-
-    
     class Meta:
         model = Order
-        fields = ['laptop', 'quantity', 'store']
+        fields = ['quantity']
         labels = {
-            'laptop': 'მოდელი',
             'quantity': 'რაოდენობა',
-            'store': 'მაღაზია'
         }
 
 class SearchForm(forms.Form):

@@ -1,13 +1,27 @@
 {% extends 'base.html' %}
 {% block content %}
-<div id="index-page">
-    <h1>მაღაზიების ჩამონათვალი</h1>
-    <p>აირჩიეთ ფილიალი:</p>
-    <ul>
-        {% for store in stores %}
-            <li><a href="{% url 'store_profile' store.pk %}">{{ store.name }}</a> - {{ store.address }}</li>
-        {% empty %}
-            <li>ფიალიალები ვერ მოიძებნა</li>
-        {% endfor %}
-    </ul>
+    <div id="index-page">
+        <h1>ლეპტოპების მაღაზიები</h1>
+        <p>აირჩიეთ მაღაზია:</p>
+        <ul>
+            {% for store in stores %}
+                <li><a href="{% url 'store_profile' store.pk %}">{{ store.name }}</a> - {{ store.address }}</li>
+            {% empty %}
+                <li>მაღაზიები ვერ მოიძებნა</li>
+            {% endfor %}
+        </ul>
+        <h2>ლეპტოპების ძებნა</h2>
+        <form method="get" action="">
+            {{ form.as_p }}
+            <input type="submit" value="ძებნა">
+        </form>
+        {% if laptops %}
+            <h2>მოიძებნა:</h2>
+            <ul>
+                {% for laptop in laptops %}
+                    <li><a href="{% url 'laptop_detail' laptop.pk %}">{{ laptop.name }}</a> - {{ laptop.price }} ლარი ({{ laptop.store.name }})</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
 {% endblock %}
